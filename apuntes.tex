@@ -84,19 +84,31 @@ Se podrían añadir las frecuencias acumuladas, las cuales se van sumando a los 
 Si la variable es cualitativa entonces las clases serán nominales. Si la variable es discretas las clases serán valores numéricos dentro del rango y si es continua serán intervalos $(l_{i-1},l_i]\:\forall i$. Si las clases son intervalos habrá varios parámetros y conceptos de interes: 
 \begin{itemize}
 	\item Amplitud del intervalo: $a_i = l_i -l_{i-1}$.
-	\item Marca de clase: Será el valor representativo del intervalo. Por ejemplo, el punto medio: $c_i = \frac{l_i + l_{i-1}}{2}$.
+	\item Marca de clase: Será el valor representativo del intervalo. Por ejemplo, el punto medio: $c_i = \frac{l_i + l_{i-1}}{2}$. Podrá representarse en la segunda columna o fila de la tabla.
 	\item Número de intervalos: Se realizará mediante aproximación pues se pueden plantear los intervalos que se quiera. Una elección típica es: 
 		\[k = \begin{cases}
 			\sqrt{n} & ,n \text{ no es muy grande}\\
 			1+\log_2(n) 
 		\end{cases}\]
+	\item Normalización: Cuando el intervalo tiene muchos decimales conviene redondear hacía arriba para que los datos sean más legibles. Notar que si se redondea a la baja se altera el número de intervalos, por lo cual no conviene. 
+	\item Límites de los intervalos: Por definición de clase, un valor de una variable solo puede pertenecer a una clase. Debido a ello hay que tener en cuenta los límites de los intervalos prestando atención a que ningún par de clases ccontenga valores repetidos.
 \end{itemize}
-
+\section{Gráficos}
+\subsection{Diagrama de Barras}
+En el eje $X$ se representan las clases y en el $Y$ las frecuencias absolutas o relativas (ya que son proporcionales la escala se mantendría). Busca en google como son que no tengo ningún conjunto de datos interesante. Si el diagrama de barras se hace a partir de una variable continua y sus intervalos entonces será un histograma. Ante intervalos de mimas amplitud, el gráfico resultante será proporcional a su correspondiente historgrama de frecuencias relativas, esta característica se tendrá que cumplir siempre. Otra vez, hay que tener cuidado con el número de intervalos seleccionados para que el histograma muestre la información de forma óptima. Según la forma del histograma puede ser:
+\begin{itemize}
+	\item Distribución unimodal simétrica: Los datos tienen forma de campana de gauss.
+	\item Distribución bimodal simétrica: Hay cierta simetría respecto al eje que divide los datos por la mitad pero no es necesariamente gaussiana. 
+	\item Distribución asimétrica a la derecha: Hay escasez de datos a la derecha.
+	\item Distribución asimétrica a la izquierda: Hay escasez de datos a la izquierda. 
+\end{itemize}
+\subsection{Diagrama de Sectores}
+Se divide un círculo en sectores proporcionales a las frecuencias. El ángulo de cada clase se calcularía con una simple regla de tres:
+\[\frac{n}{n_i} = \frac{2\pi}{x_i}\]
 
 \end{document}
 
 
 
-
-
+\end{itemize}
 

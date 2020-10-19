@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1603123449 "apuntes.tex" "apuntes.pdf" "apuntes" 1603123449
+["pdflatex"] 1603127934 "apuntes.tex" "apuntes.pdf" "apuntes" 1603127934
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1591545468 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1591545468 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1591545468 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -35,6 +35,7 @@
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1591545468 32362 179c33bbf43f19adbb3825bb4e36e57a ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1591545468 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1591545468 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb" 1591545468 35022 e40946b20bfdcd1099eafb2bcd9f25dd ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1591545468 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1591545468 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1591545468 32716 08e384dc442464e7285e891af9f45947 ""
@@ -69,9 +70,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1591545468 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1602083943 4855604 a2b69e422d881628e3d9a5db2035053f ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1602083905 2514049 bdcc6ccf323cb62b725a330b9c8611d1 ""
-  "apuntes.aux" 1603123449 698 28930f46f7e4052fa810b2eacaa5ede4 "pdflatex"
-  "apuntes.tex" 1603123229 5116 ee02abeac189774596cca42103ab054a ""
+  "apuntes.aux" 1603127934 1019 88a2825aaeeb6429ae60171508139277 "pdflatex"
+  "apuntes.tex" 1603127933 7082 7392a474a01378619d1783e89ec2bb66 ""
   (generated)
-  "apuntes.aux"
   "apuntes.pdf"
+  "apuntes.aux"
   "apuntes.log"
