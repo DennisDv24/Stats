@@ -10,7 +10,7 @@
 
 \usepackage[margin=0.9in]{geometry}
 
-
+\spanishdecimal{.}
 
 \title{Apuntes Stats}
 \author{Oskar Denis Siodmok}
@@ -106,9 +106,122 @@ En el eje $X$ se representan las clases y en el $Y$ las frecuencias absolutas o 
 Se divide un círculo en sectores proporcionales a las frecuencias. El ángulo de cada clase se calcularía con una simple regla de tres:
 \[\frac{n}{n_i} = \frac{2\pi}{x_i}\]
 
+\section{Medidas Descriptivas de Centralización}
+Las medias descpritivas de centralización aproximan el valor central respecto al cual los datos se ordenan. De entre estas medidas destacan la media, moda y mediana.
+\subsection{Media Aritmética}
+Esta medida será la suma total de todos los datos dividida por el número total de observaciones. 
+	\[\bar x = \frac{1}{n}\sum_{i=1}^nx_i\]
+Donde $x_i$ hará referencia a cada observación. En el caso de que los datos se den en forma de tabla de frecuencia: 
+	\[\bar x = \frac{1}{n}\sum_{i=1}^kx_in_i = \sum_{i=1}^kx_if_i\]
+En el caso de ser una variable contínua solo habrá que cambiar $x_i$ por el número de observaciones dentro del intervalo, o sea, $c_i$. Dependiendo de la $a_i$, o sea, la amplitud de los intervalos, habrá una mayor o menor pérdida de precisión. Por otro lado, la linealidad de la media será una función $\bar y = a+b\bar x$ de la misma forma que $Y=a+bX$.
+
+Este parámetro presenta una serie de inconvenientes:
+\begin{itemize}
+	\item No se puede calcular con variables cualitativas o nominales.
+	\item Es muy sensible a los valores extremos.
+	\item Centraliza los datos de forma subóptima ante distribuciones de datos asimétricas.
+	\item Ante variables contínuas y tablas de frecuencia su valor depende de los intervalos.
+	\item Ante una variable discreta, la media puede no pertenecer al dominio de la variable.
+\end{itemize}
+
+\subsection{Moda}
+Se trata del valor mas frecuente dentro de las observaciones. En el caso de que se trabaje con una variable continua se considerará el intervalo modal como al intervalo de mayor frecuencia. Este parámetro tiene la ventaja de ser muy fácil de calcular pero puede no ser única.
+\subsection{Mediana}
+La mediana será el parámetro que divida al número de observaciones al $50\%$ por los dos lados, o sea, será la observación central de todas las observaciones. Ante $n$ observaciones: 
+\[M_e = \begin{cases}
+		x_{(n+1)/2} & \iff n\text{ impar}\\
+		\frac{x_{n/2} + x_{(n/2)+1}}{2} & \iff n\text{ par}\\
+	\end{cases}\]
+Si los datos se ordenan en una tabla de frecuencia, $M_e$ será el primer valor con $F_i\geq 1$ o con $N_i\geq n$. Entre las propiedades de este parámetro destaca: 
+\begin{itemize}
+	\item No le afectan las observaciones extremas pues solo depende del orden de los valores de la variable. Debido a esto la mediana se usa mucho en distribuciones asimétricas.
+	\item No se puede calcular con variables cualitativas o nominales, al igual que la media.
+	\item Su mayor defecto es que tiene propiedades muy complicadas en las que se profundizará más adelante. Debido a esta abstracción es difícil de usar en inferencia estadística.
+\end{itemize}
+\section{Medidas Descriptivas de Posición}
+Una posición genérica es un cuantil, al igual que la mediana informa sobre el valor medio de todas las observaciones, un cuantil informa sobre la posición en concreto. De esta forma, $p\in\{n\in\mathbb{R}:0<n<100\}$ será un percentil e informará sobre el porcentaje de datos que tendrá por debajo de si mismo denotado como $P_p$. A partir de estos percentiles se pueden definir los cuartiles.
+\begin{itemize}
+	\item Primer Cuartil: $Q_1 = P_{25}$.
+	\item Segundo Cuartil: $Q_2 = P_{50} = M_e$.
+	\item Tercer Cuartil: $Q_3 = P_{75}$
+\end{itemize}
+Estos ofrecen información muy genérica. Por ejemplo, para un conjunto de notas, si $Q_3 =6$ sabremos que un $7.79$ se encuentra entre el $25\%$ mejores notas de la clase.
+De la misma forma se definirán los deciles como $P_p$ con $p\in\{10n:n\in[1,9]\subseteq\mathbb{N}\}$.
+
+\section{Medidas Descriptivas de Dispersión}
+Ante datos muy dispersos las medidas de centralización pierden su efectividad. Para esto existen las medidas de dispersión las cuales trabajarán con la sensibilidad de los datos.
+\subsection{Rango}
+Se define como $R=max\{x_1,\dots,x_n\}-min\{x_1,\dots,x_n\}$. Este parámetro es fácil de calcular y comparte unidades con los datos. Entre las desventajas de esta medida destacan: 
+\begin{itemize}
+	\item No se utilizan todos los datos (solo $2$).
+	\item Puede variar mucho ante datos extremos.
+	\item Ante el aumento de observaciones el rango o aumenta o se queda igual, nunca baja.
+\end{itemize}
+De la misma forma se puede definir el rango intercuartílico como $RQ = Q_3-Q_1$. Tanto el rango intercuartílico como el rango general son de gran importancia para realizar diagramas de cajas.
+\subsection{Diagramas de Cajas}
+Este sintetizará múltiples parámetros de posición y, a su vez, de dispersión. Presentan información sobre la simetría y los datos atípicos de la dispersión. El proceso de creación de un diagrama de cajas es bastante más específico que los métodos del resto de tipo de gráficos. El proceso se puede sintetizar en múltiples pasos: 
+\begin{itemize}
+	\item Primero se realiza un rectángulo que pasa por los cuartiles. Este rectángulo contendrá una línea perpendicular que lo dividirá en dos y representará la mediana. De esta forma, dentro de la caja quedaría representado el $50\%$ de los datos.
+	\item A continuación se representarán $2$ líneas perpendiculares al eje de los datos a $1.5RQ$ de los 2 cuartiles, tanto a la derecha como a la izquierda.
+	\item Para terminar la representación de estos límites se conectarán las líneas a la caja con línea punteada. Así, cualquier dato fuera de estos límites se podría considerar atípico y se representaría como puntos concretos.
+\end{itemize}
+\subsection{Desviación Media}
+Otra forma bastante eficiente de calcular que tan atípico es un valor $x_i$ es con la diferencia de este con la media. De esta forma $x_i-\bar x\:\forall i$ serían las desviaciones de cada valor respecto a la media aritmética. Una forma de condensar toda esta información sobre cada observación podría ser con la media de todas las desviaciones:
+\[D_m = \frac{1}{n}\sum_{i=1}^n(x_i-\bar x) = \frac{1}{n}\sum_{i=1}^nx_i-n\bar x\]
+El problema aparece teniendo en cuenta que en función de si la observación está a la derecha o a la izquierda el valor de la desviación es o positivo o negativo, de forma que la desviación media se acercaría a $0$, o sea, $D_m\approx0$. Solucionar este problema es tan sencillo como usar el valor absoluto de la diferencia para cada dato. Finalmente, la desviación media se definirá como: 
+\[D_m = \frac1{n}\sum_{i=1}^n|x_i-\bar x|\]
+\subsection{Varianza y Desviación Típica}
+La esencia será la misma que la de $D_m$ pero para forzar el símbolo positvo se usará el cuadrado de la diferencia. Esto implicará que el parámetro será mucho más sensible.
+\[s^2 = \frac1{n}\sum_{i=1}^n(x_i-\bar x)^2\]
+Hay que tener en cuenta que la magnitud de este parámetro será el cuadrado de la magnitud de los datos. Para solucionar esto aparece el parámetro de \textit{Desviación típica}, la cual se definirá como la raiz de la varianza: \[s=\sqrt{s^2}\]
+Además, con un simple desarrollo se comprueba que:
+\[s^2 = \frac1{n}\sum_{i=1}^n(x_i-\bar x)^2 = \frac1{n}\sum_{i=1}^n x_i^2-\bar x ^2\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
 
 
 
-\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
