@@ -176,6 +176,40 @@ La esencia será la misma que la de $D_m$ pero para forzar el símbolo positvo s
 Hay que tener en cuenta que la magnitud de este parámetro será el cuadrado de la magnitud de los datos. Para solucionar esto aparece el parámetro de \textit{Desviación típica}, la cual se definirá como la raiz de la varianza: \[s=\sqrt{s^2}\]
 Además, con un simple desarrollo se comprueba que:
 \[s^2 = \frac1{n}\sum_{i=1}^n(x_i-\bar x)^2 = \frac1{n}\sum_{i=1}^n x_i^2-\bar x ^2\]
+De la misma forma que la media, para una tabla de frecuencia: 
+\[s^2 =\frac1n\sum_{i=1}^kx_i^2n_i-\bar x^2 = \sum_{i=1}^kx_i^2f_i-\bar x^2\]
+
+Entre las propiedades de estas medidas destaca:
+\begin{itemize}
+	\item Las dos son sensibles a los valores extremos.
+	\item Se comprueba que para $s$ mínimo el $75\%$ de los datos se encuentra en el intervalo $(\bar x -2s,\:\bar x+2s)$.
+	\item No se puede usar para variables nominales (de la misma forma que la media).
+\end{itemize}
+Por último, carbría destacar la cuasi-varianza la cual se dieferencia de la varianza por dividir el resultado entre $n-1$ y no $n$. Este valor tiene mejores propiedades que la varianza para estimar por lo cual se usa mucho más en Inferencia Estadística.
+\[s_c^2 = \frac1{n-1}\sum_{i=1}^n(x_i-\bar x)^2 = \frac{ns^2}{n-1}\]
+\subsection{Tipificación}
+Este proceso consistirá en convertir una variable a una media de $0$ y una desviación estándar $s_z = 1$. Esta nueva variable se llamará variable tipificada y se denotará como: 
+\[Z=\frac{X-\bar x}{s}\]
+Tipificar a variables con estas propiedades es útil para poder hacer comparaciones entre diferentes conjuntos de datos con diferentes dominios
+\subsection{Coeficiente de Variación}
+\[CV=\frac s{\bar x} 100\]
+
+Esta medida se usa para comparar variables entre 2 conjuntos de datos con diferente media o unidades. También sirve para determinar si la media es consistente con una varianza o para comprobar la variabilidad entre grupos de datos tomados por personas distintas. Todo esto se debe a que este parámetro se mide en porcentajes. Hay que tener cuidado co la tipificación, pues una media de $0$ podría implicar una operación ilegal. 
+
+\section{Medidas de Forma}
+Al estudiar un conjunto de datos también resulta interesante ver si estos de distribuyen siguiendo una simetría o no. Una vez conocido este valor vendría bien preguntarse si el histograma es más o menos apuntado, característica que se medirá a partir de la frecuencia de la normal. De esta forma, si una variable es continua simétrica y unimodal entonces la media, mediana y moda coincidirán.
+
+Además, si se presenta una asimetría hay que considerar si es positiva o negativa, esto implicaría frecuencias más altas a la izquierda o a la derecha, respectivamente. Los diferentes parámetros de forma son: 
+\begin{itemize}
+	\item Momento de orden $p$ para $p\in\mathbb{N}$: $\mu_p=\frac1{n}\sum\limits_{i=1}^nx_i^p$.
+	\item Momento central de orden $p$ para $p\in\mathbb{N}$: $m_p = \frac1{n}\sum\limits_{i=1}^n(x_i-\bar x)^p$.
+	\item Coeficiente de asimetría: $\gamma_1= \frac{m_3}{m_2\sqrt{m_2}} = \frac{\frac{1}{n}\sum_{i=1}^n(x_i-\bar x)^3}{s^3}$.
+	\item Coeficiente de curtosis o apuntamiento: $\gamma_2 = \frac{m_4}{s^4}-3$.
+\end{itemize}
+Siendo este tercer parámetro el más importante, pues nos informa sobre la asimetría de forma directa. Si $\gamma > 0\longrightarrow$ asimetría positiva y si $\gamma < 0\longrightarrow$ asimetría negativa. De la misma forma, $\gamma_2$ cuantifíca que tan apuntada es una distribución. La referencia de este parámetro es el apuntamiento de la distribución gaussiana o normal para la cual $\frac{m_4}{s^4} = 3$. De esta forma, si $\gamma >0$ la distribución será leptocúrtica (más apuntada que la normal) y si $\gamma<0$ platicúrtica (más aplastada que la normal).
+
+
+
 
 
 
