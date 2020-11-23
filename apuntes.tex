@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 
 \usepackage{xcolor}
+\usepackage{indentfirst}
 
 
 \usepackage[margin=0.9in]{geometry}
@@ -208,32 +209,107 @@ Además, si se presenta una asimetría hay que considerar si es positiva o negat
 \end{itemize}
 Siendo este tercer parámetro el más importante, pues nos informa sobre la asimetría de forma directa. Si $\gamma > 0\longrightarrow$ asimetría positiva y si $\gamma < 0\longrightarrow$ asimetría negativa. De la misma forma, $\gamma_2$ cuantifíca que tan apuntada es una distribución. La referencia de este parámetro es el apuntamiento de la distribución gaussiana o normal para la cual $\frac{m_4}{s^4} = 3$. De esta forma, si $\gamma >0$ la distribución será leptocúrtica (más apuntada que la normal) y si $\gamma<0$ platicúrtica (más aplastada que la normal).
 
+\setcounter{chapter}{2}
+\chapter*{\color{blue}\textbf{2} \color{black} Datos Bivariantes}
+\setcounter{section}{0}
+\section{Distribución de dos variables}
+Dada una población estadística de $n$ individuos y 2 variables $X$ e $Y$ se define:
+\begin{itemize}
+	\item Frecuencia Total: Número total de indivíduos $n$.
+	\item Frecuencia absoluta del par $(x_i, y_j)$: Se refiere al número de observaciones total para cada observación de las 2 variables a la vez. Se denota por $n_{ij}$.
+	\item Frecuencia relativa del par $(x_i, y_j)$: Exactamente igual que las frecuencias relativas para una variables. Se denota como $f_{ij} = \frac{n_{ij}}{n}$.
+\end{itemize}
 
+\section{Tablas de frecuencia}
+\begin{minipage}[h]{0.5\textwidth}
+\setlength{\parindent}{1.5em} \indent Estos pares de observaciones para las 2 variables se pueden organizar en tablas de frecuencia bivariantes.
+En estas tablas se pueden mostrar tanto frecuencias absolutas como relativas. En el caso de que las variables sean cualitativas, entonces la tabla se denominará como tabla de contingencia.
+\end{minipage}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{center}
+\begin{tabular}{c||c|c|c|c||c}
+	$X\setminus Y$ & $y_1$ & $y_2$ & $\hdots$ & $y_l$ & \\
+	\hline \hline
+	$x_1$ & $n_{11}$ & $n_{12}$ & $\hdots$ & $n_{1l}$ & $n_{1.}$ \\
+	\hline
+	$x_2$ & $n_{21}$ & $n_{22}$ & $\hdots$ & $n_{2l}$ & $n_{2.}$ \\
+	\hline
+	$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ \\
+	\hline
+	$x_k$ & $n_{k1}$ & $n_{k2}$ & $\hdots$ & $n_{kl}$ & $n_{k.}$ \\
+	\hline\hline
+	 	& $n_{.1}$ & $n_{.2}$ & $\hdots$ & $n_{.l}$ & $n$ \\
+\end{tabular}
+\end{center}
+\end{minipage}
+\section{Distribuciones Marginales}
+Una frecuencia absoluta o relativa margianl se refiere al número de veces que se repite un $x_i$ sin tener en cuenta el valor de $Y$, como si con una distribución de una solo variable se estuviera trabajando. De esta forma, en base a la tabla del apartado anterior: 
+\[n_{i.} = \sum_{j = 1}^l n_{ij}\;,\;\;
+n_{.j} = \sum_{i = 1}^kn_{ij}\;,\;\;
+f_{i.} = \frac{n_i.}{n}\;,\;\;
+f_{.j} = \frac{n.j}{n}\]
+\section{Distribuciones Condicionales}
+Una distribución de $Y$ sabiendo que $X = X_i$ se denota como $(Y|X = x_i)$. La misma notación se usa para distribuciones de $X$ con un $Y$ específico.
+\begin{center}
+\begin{tabular}{c|cccc|c}
+	$Y|X=x_i$ & $y_1$ & $y_2$ & $\hdots$ & $y_l$ & \\
+	\hline
+	$n_{ij}$  & $n_{i1}$ & $n_{i2}$ & $\hdots$ & $n_{il}$ & $n_{i.}$
+\end{tabular}
+\end{center}
+\section{Variables Independientes}
+Dos variables son estadísticamente independientes entre ellas si la varianza de una de ellas no afecta a los valores de la otra. De esta forma, ocurre que la distribución de una de las variables condicionada por la otra no afecta a los valores de esos valores. Además, $X,Y$ independientes $\iff f_{ij} = f_{i.}f_{.j}$.
+\section{Gráficos}
+Estos datos se pueden representar de diferentes formas, por ejemplo, si el dominio de una de las variables corresponde a solo 2 valores, entonces se podría hacer 2 representaciones gráficas de la segunda variable condicionada por los 2 valores de la primera. Son de interes los diagramas de barras, los cuales sepueden representar apilados o agrupados. 
 
+Para datos multivariables aparece un tipo de representación nueva: los diagramas de dispersión. Para datos bivariantes, por ejemplo, se usa cada pareja de observaciones $(x_i,y_i)$ como un punto del plano. Una vez representados todos los puntos, se pueden buscar relaciones entre las variables de forma bastante cómoda.
 
+\section{Medidas Descriptivas de Dependencia Lineal}
+Dos variables serán dependientes linealmente cuando el aumento de una implica el aumento o disminución de la otra. Existen diferentes medidas para calcular esta dependencia.
+\subsection{Covarianza}
+Se define como:
+\[s_{xy} = \frac1{n}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})\]
+El razonamiento para esta cuenta es el mismo que el de la varianza para una variable. Ahora bien, se dirá que si las variables no están relacionadas entonces la covarizanda tiende a cero, en cambio, si la varianza es negativa la relación entre las variables será negativa. Haciendo un poco de álgebra para la expresión de la covarianza se puede llegar a que:
+\[s_{xy} = \frac1{n}\sum_{i=1}^nx_iy_i-\bar{x}\bar{y}\]
+Expresión que, computacionalmente, es mucho más óptima.
 
+Finalmente, hay que tener en cuenta que una covarianza de 0 no implica necesariamente una independencia en los datos. Por ejemplo, si $X$ depende de $Y$ de forma parabólica, la covarianza se acercará a 0, pero los datos estarán claramente relacionados.
 
+\subsection{Vector de Medias y Matriz de Covarianza}
+Será una medida de interes el vector de medias, el cual, como indica, contendrá los valores de las medias de todas las variables.
 
+Por otro lado, la matriz de covarianza se define como:
+\[S=\begin{pmatrix}
+	s_x^2 & s_{xy}\\s_{xy} & s_y^2
+\end{pmatrix}\]
+Donde, recordando, $s_{x_i}^2$ hace referencia a la varianza de una variable $X_i$.
+	
+\subsection{Coeficiente de Correlación Lineal}
+Aunque la covarianza sea una buena medida para medir correlaciones, está se ve afectada por las unidades: si una variable es dependiente del otra al $100\%$ pero están relacionadas por una recta de mucha pendiente, entonces la covarianza será muy grande. Para evitar esto hace falta platear una nueva medida que informe sólamente del nivel de dependencia de las variables, esta es el coeficiente de correlación lineal, que se define como:
+\[r_{xy} = \frac{s_{xy}}{s_xs_y}\]
 
+De esta forma, si la correlación es absoluta, $r_{xy} = (1 \lor -1)$. En caso contrario, si la correlación lineal es nula, $r_{xy}\to 0$. Hay que tener en cuenta que, en el caso de que una de las variables sea constante, independientemente del valor de la otra, la correlación lineal será de 0, aunque gráficamente parezca que existe una correlación. Finalmente, hay que tener en cuenta que un coeficiente de correlación cercano a 1 no implica una relación de causalidad entre las variables, podría tratarse sólamente de una coincidencia. A este fenómeno se le conoce como correlación espuria.
 
+\subsection{Recta de Regresión Lineal}
+Una forma interesante de expresar una relación lineal es, redundantemente, con una recta. Esta recta a su vez servirá de modelo para poder predecir resultados de observaiones de una solo variable. Esta recta se representa como:
+\[Y=a+bX-\epsilon\]
+Donde $a$ y $b$ son los coeficientes de la regresión y $\epsilon$ es el error.
 
+Una forma óptima de calcular esta recta y sus parámetros es minimizando el error, o sea, que la distancia de cada uno de los puntos a la recta sea la mínima posible. Así, para cada par de datos $(x_i,y_i)$, el error de esa observación respecto a la recta será:
+\[\epsilon_i = y_i-(a+bx_i)\]
 
+\subsubsection{Ajusto por Mínimos Cuadrados}
+Como se ha mencionado en el anterior párrafo, el punto de la cuenta de la recta será minimizar el error según los valores de $a$ y $b$. O sea, se quiere minimizar la función:
+\[E(a,b) = \sum_{i=1}^n\epsilon_i^2 = \sum_{i=1}^n(y_i-a-bx_i)^2\]
 
+Haciendo las cuentas se obtiene que:
+\[b=\frac{s_{xy}}{s_x^2}\;,\;\;a = \bar{y}-b\bar{x}\]
+Una vez el modelo es óptimo, se puede usar la recta $Y=a+bX$ para hacer otras predicciones. Hay que considerar que es peligroso hacer observaciones fuera del rango de las variables. Se cumple también que, una vez optimizado el modelo, la media de los errores tiende a 0. 
 
-
-
-
-
-		
-
-
-
-
-
-
-
-
-
+\subsubsection{Varianza Residual y Coeficiente de determinación}
+Dada una recta de regresión lineal ajustada mediante mínimos cuadrados, la varianza residual se define como:
+\[s_\epsilon^2=\frac1{n}\sum_{i=1}^n\epsilon_i^2=s_y^2(1-r_{xy}^2)\]
+Donde aparece el coeficiente de determinación $R^2 = r_{xy}^2$. Este valor hace referencia a la proporción de la variación total en la variable dependiente $Y$.
 
 
 
