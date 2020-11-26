@@ -312,6 +312,100 @@ Dada una recta de regresión lineal ajustada mediante mínimos cuadrados, la var
 Donde aparece el coeficiente de determinación $R^2 = r_{xy}^2$. Este valor hace referencia a la proporción de la variación total en la variable dependiente $Y$.
 
 
+\setcounter{chapter}{3}
+\chapter*{\color{blue}\textbf{3} \color{black} Probabilidad}
+\setcounter{section}{0}
+\section{Conceptos Básicos}
+\begin{itemize}
+\item Experimento Aleatorio: el resultado impredecible pertenece a un conjunto de posibles resultados.
+\item Suceso Elemental: elemento del conjunto de posibles resultados.
+\item Espacio muestral: conjunto de resultados $E = \{e_1,e_2,\dots,e_n\}$.
+\item Suceso aleatorio: subconjunto de $E$.
+\item Suceso seguro: siempre se verifica y coincide con $E$.
+\item Suceso imposible: nunca se verifica ($\emptyset\subset E$).
+\item Suceso contrario de $A$: $A^c = \bar{A} = \{e\in E : e\notin A\}$.
+\end{itemize}
+
+\section{Operaciones básicas de sucesos}
+Aparte de las típicas operaciones de conjuntos, es de interes la diferencia simétrica:
+\[A\bigtriangleup B = (A-B)\cup(B-A)=(A\cup B)-(B\cap A)\]
+
+\section{Definición de Probabilidad}
+$P$ es una función de probabilidad sobre $E$ si se verifican 3 axiomas:
+\begin{enumerate}
+\item \[
+\begin{array}{rcl}
+	P : E&\longrightarrow&[0,1]\subset\mathbb{R}\\
+	A&\longmapsto&0\leq P(A) \leq 1
+\end{array}\]
+\item \[P(E) = 1\]
+\item \[P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^\infty P(A_i)\iff A_i\cap A_j =\emptyset\:\forall\:A_i,A_j\in A\]
+\end{enumerate}
+
+\subsubsection{Interpretación Clásica de Probabilidad}
+La Regla de Laplace es un una interpreación clásica de la probabilidad:
+\[P(A) = \frac{\#\text{ Casos favorables de A}}{\#\text{ Casos posibles}}\]
+Solo para resultado verosímiles.
+\subsubsection{Interpretación Frecuentista de la Probabilidad}
+Se aplican a experimentos con repeticiones indefinidas con condiciones similares.
+\[P(A) = \lim_{n\to\infty}\frac{A_n}{n}\]
+Se puede demostrar que esta definición cumple los axiomas de la probabilidad. YA que en la práctica tender al infinito es imposible, simplemente se hace un número de observaciones suficientes como para poder estimar la probabilidad.
+
+\section{Probabilidad como Grado de Confianza}
+Las ventajas de usar la probabilidad como modelo de ocurrencia son que el modelo mejora con el tiempo (modelo evolutivo) y que se puede aplicar ante la no opinión sobre la ocurrencia de un suceso.
+
+\section{Probabilidad Condicionada e Independencia de Sucesos}
+Se define la probabilidad de $A$ condicionada por la advertencia de $B$ como:
+\[P(A|B) = \frac{P(A\cap B)}{P(B)}\;,\;P(B)\neq 0\]
+\begin{itemize}
+	\item $P(A|B) = P(A) \lor P(B|A) = P(B)\iff(A,B)$ independientes.
+	\item $P(A\cap B) = P(A)P(B) \iff (A,B)$ independientes.
+	\item $P(\bar A|B) = 1-P(A|B)$.
+\end{itemize}
+\section{Teorema de la Probabilidad Compuesta}
+\[P(A) = P(A_1)P(A_2|A_1)P(A_3|A_1\cap A_2)\dots P(A_n|A_1\cap\dots\cap A_{n-1})\;,\;\;A=\{A_1,A_2,\dots,A_n\}\subset E\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
