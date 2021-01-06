@@ -9,6 +9,12 @@
 \usepackage{indentfirst}
 
 
+\newcommand{\cchap}[2]{
+	\setcounter{chapter}{#1}
+	\chapter*{\color{blue}\textbf{#1} \color{black} #2}
+	\setcounter{section}{0}
+}
+
 \usepackage[margin=0.9in]{geometry}
 
 \spanishdecimal{.}
@@ -17,6 +23,7 @@
 \author{Oskar Denis Siodmok}
 \begin{document}
 \maketitle
+
 
 \setcounter{chapter}{1}
 \chapter*{\color{blue}\textbf{1} \color{black} Introducción}
@@ -209,9 +216,7 @@ Además, si se presenta una asimetría hay que considerar si es positiva o negat
 \end{itemize}
 Siendo este tercer parámetro el más importante, pues nos informa sobre la asimetría de forma directa. Si $\gamma > 0\longrightarrow$ asimetría positiva y si $\gamma < 0\longrightarrow$ asimetría negativa. De la misma forma, $\gamma_2$ cuantifíca que tan apuntada es una distribución. La referencia de este parámetro es el apuntamiento de la distribución gaussiana o normal para la cual $\frac{m_4}{s^4} = 3$. De esta forma, si $\gamma >0$ la distribución será leptocúrtica (más apuntada que la normal) y si $\gamma<0$ platicúrtica (más aplastada que la normal).
 
-\setcounter{chapter}{2}
-\chapter*{\color{blue}\textbf{2} \color{black} Datos Bivariantes}
-\setcounter{section}{0}
+\cchap{2}{Datos Bivariantes}
 \section{Distribución de dos variables}
 Dada una población estadística de $n$ individuos y 2 variables $X$ e $Y$ se define:
 \begin{itemize}
@@ -312,9 +317,7 @@ Dada una recta de regresión lineal ajustada mediante mínimos cuadrados, la var
 Donde aparece el coeficiente de determinación $R^2 = r_{xy}^2$. Este valor hace referencia a la proporción de la variación total en la variable dependiente $Y$.
 
 
-\setcounter{chapter}{3}
-\chapter*{\color{blue}\textbf{3} \color{black} Probabilidad}
-\setcounter{section}{0}
+\cchap{3}{Probabilidad}
 \section{Conceptos Básicos}
 \begin{itemize}
 \item Experimento Aleatorio: el resultado impredecible pertenece a un conjunto de posibles resultados.
@@ -362,16 +365,70 @@ Se define la probabilidad de $A$ condicionada por la advertencia de $B$ como:
 	\item $P(A\cap B) = P(A)P(B) \iff (A,B)$ independientes.
 	\item $P(\bar A|B) = 1-P(A|B)$.
 \end{itemize}
+
 \section{Teorema de la Probabilidad Compuesta}
-\[P(A) = P(A_1)P(A_2|A_1)P(A_3|A_1\cap A_2)\dots P(A_n|A_1\cap\dots\cap A_{n-1})\;,\;\;A=\{A_1,A_2,\dots,A_n\}\subset E\]
+Para una colección $A_1, A_2, \dots, A_n\subset E$ de sucesos aleatorios se verifica:
+\[P(A) = P(A_1)P(A_2|A_1)P(A_3|A_1\cap A_2)\dots P(A_n|A_1\cap\dots\cap A_{n-1})\]
 
+\section{Teorema de la Probabilidad Total}
+Dada una colección $A_1, A_2, \dots, A_n\subset E$ que es un sistema exhaustivo y mutuamente excluyente se verifica:
+\[\forall B\subset E :\: P(B) = \sum_{i=1}^n P(B|A_i)P(A_i)\]
+Donde una colección es un sistema exhaustivo y excluyente si se verifica: 
+\[\bigcup_{i=1}^n A_i = E\;\land\;A_i\cap A_j = \emptyset\; \forall i\neq j\]
 
+\section{Teorema de Bayes}
+Dado un sistema exhaustivo y excluyente $A_1, A_2, \dots, A_n\subset E$ y sea $B\subset E$ un suceso entonces se verifica:
+\[P(A_j|B) = \frac{P(B|A_j)P(A_j)}{\sum\limits_{i=1}^nP(B|A_i)P(A_i)}\;\forall j\in\{1,\dots,n\}\]
+Este teorema se puede probar fácilmente mediante la definición de probabilidad condicionada y el teorema de la probabilidad total.
 
+\cchap{4}{Variables Aleatorias}
+\section{Definición}
+Una variable aleatoria es una función tal que:
+\[\begin{array}{rcl}
+	X:E & \longrightarrow & \mathbb{R}\\
+	e & \longmapsto & X(e)
+\end{array}\]
+O sea, a cada suceso elemental $e\in E$ se le asocia un valor real mediante $X(e)$. $X$ se considera una variable aleatoria pues se aplica sobre sucesos aleatorios. Aun así, los valores que toma la variable no son aleatorios, están definidos de forma precista para cada suceso $e$. Además: 
+\[P(X = x) = P(\{ e\in E : X(e) = x \})\]
+\[P(X\in A) = P(\{ e\in E : X(e)\in A \})\]
+Finalmente, la distribución de una varibale aleatoria $X$ se da a partir de calcular las probabilidades de todos los posibles valores de $X$, o sea, de su dominio.
 
+\section{Clasificación de variables}
+\begin{itemize}
+	\item Variable Aleatoria Discreta: Solo puede tomar valores de un conjunto finito o infinito numbrable. Por ejemplo: $X:E\to\mathbb{N}$.
+	\item Variable Aleatoria Continua: Toma infinitos valores no numerables. Por ejemplo: $X:E\to\mathbb{R}$.
+\end{itemize}
 
+\section{Variables Aleatorias Discretas}
+\subsection{Función de Masa de Probabilidad}
+Dada una $X : E\to\mathbb{N}$, se define una función de masa de probabilidad, $f(x_i)$, como la probabilidad de que $X$ tome el valor $x_i$:
+\[\begin{array}{rcl}
+	f:\mathbb{N} & \longrightarrow & [0,1]\\
+	x_i & \longmapsto & f(x_i) = P(X = x_i) = P(\{e\in E : X(e) = x_i\})
+\end{array}\]
+\[x_i\notin dom(X) \longrightarrow f(x_i) = 0\]
+A partir de los axiomas de la probabilidad y siendo $dom(X)=\{x_1, x_2, \dots,x_k\}$ se deduce que:
+\begin{itemize}
+	\item $f(x_i) \geq 0\:\forall\:i\in\{1,\dots,k\}$.
+	\item $\sum\limits_{i=1}^k f(x_i) = \sum\limits_{i=1}^k P(X = x_i) = 1$.
+\end{itemize}
+Resulta cómodo, para la representación de funciones de masa, usar un diagrama de barras.
 
-
-
+\subsection{Función de Distribución}
+\[\begin{array}{rcl}
+	F:\mathbb{R} & \longrightarrow & [0,1] \\
+	x & \longmapsto & F(x) = P(X \leq x) =P(\{ e\in E : X(e)\leq x \})
+\end{array}\]
+Propiedades:
+\begin{itemize}
+	\item $F$ es monótona no decreciente.
+	\item $F$ es continua por la derecha.
+	\item $\lim\limits_{x\to -\infty}F(x)=0$.
+	\item $\lim\limits_{x\to +\infty}F(x)=1$.
+	\item $P(X>x) = 1-F(x)$.
+	\item $P(x_i<X\leq x_j) = F(x_j)-F(x_i)$.
+\end{itemize}
+Esta función es escalonada en cada intervalo $[x_k, x_{k+1})$ y tiene discontinuidades en los saltos de intervalos (o sea, $k=1,2,\dots$). El salto entre intervalos representa la probabilidad del valor en ese punto.
 
 
 
