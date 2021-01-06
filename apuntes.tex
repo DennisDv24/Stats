@@ -430,13 +430,86 @@ Propiedades:
 \end{itemize}
 Esta función es escalonada en cada intervalo $[x_k, x_{k+1})$ y tiene discontinuidades en los saltos de intervalos (o sea, $k=1,2,\dots$). El salto entre intervalos representa la probabilidad del valor en ese punto.
 
+\subsection{Momentos de una variable aleatoria discreta}
+Estos, equivalentes a las medidas descriptivas, son:
+\begin{itemize}
+	\item Esperanza (Media) de una Variable Aleatoria: $E(X) = \mu = \sum x_if(x_i)$.
+	\item Varianza de una Variable Aleatoria: $Var(X) = \sigma^2 = \sum (x_i-\mu)^2f(x_i) = \sum x_i^2f(x_i)-\mu^2$. Además, se observa que: $Var(X) = E(X^2)-E(X)^2$.
+	\item Desviación Típica de una Variable Aleatoria: $sd(X)= \sigma =\sqrt{Var(X)}$.
+\end{itemize}
+\section{Desigualdad de Chebycheff}
+Para $X$ una distribución con media $\mu$ y desviación típica $\sigma$, la probabilidad de obtener un valor que se desvie de la media mínimo $k\sigma$ veces es de $1/k^2$. Esto es:
+\[P(|X-\mu|\geq k\sigma)\leq\frac 1{k^2}\:\equiv\: P(|X-\mu|<k\sigma)>1-\frac 1{k^2}\]
+Es así como la desviación típica se usapara medir la dispersión. Este teorema ofrece un rango límite ($1/k^2$) que en muchas ocasiones puede resultar obvio. Para mejores estimaciones se usa otras hipótesis.
+\section{Distribución de Bernoulli}
+Un experimento consiste en observar la ocurrencia de un suceso. $p$ será la probabilidad de que ocurra y $q$ será $1-p$, o sea, la probabilidad de fracaso. Este experimento se podría definir mediante una variable aleatoria discrecta como $X=1$ si el suceso ocurre y $X=0$ si no lo hace.
+Así, se dirá que $X\sim Bernoulli(p)$ si
+\[
+	X=\begin{cases}
+		1\text{ donde }P(X=1)=p\\
+		0\text{ donde }P(X=0)=q
+	\end{cases}
+\]
+\subsection{Funciones de una variable aleatoria de Bernoulli}
+\begin{itemize}
+	\item Función de masa de probabilidad de la variale:
+		\[\begin{array}{c}
+			f(1) = P(X=1)=p\\
+		f(0) = P(X=0)=q
+	\end{array}\]
+	\item Función de distribución de la variable:
+		\[F(x) = \begin{cases}
+			0\iff x<0\\
+			q \iff 0\leq x<1\\
+			1 \iff x\geq 1\end{cases}\]
 
+	\item Media y Varianza de la variable:
+		\[\begin{array}{c}
+			E[X] = \mu = p\\
+			Var[X] = \sigma^2 = pq
+		\end{array}\]
+\end{itemize}
 
+\section{Distribución Binomial}
+Un experimento consiste en considerar $n$ repeticiones independientes. Los resultados posibles son el fracaso y el éxito. $p$ será la probabilidad de éxito en una repetición. La variable aleatoria discreta se definirá como $X = $ número de éxitos obtenidos en $n$ pruebas. Asi, se dirá que $X$ sigue una distribución binomial $X\sim B(n,p)$.
+\begin{itemize}
+	\item Función de masa de probabilidad de la variable:
+		\[P(X= x) = \binom{n}{x}p^x(1-p)^{n-x}\:,\; x\in\{0,1,2,\dots,n\}\]
+	\item Media y Varianza de la variable:
+		\[\begin{array}{rl} 
+				E[X] \!\!\!\!&= \mu = np\\
+				Var[X] \!\!\!\!&= \sigma^2 = np(1-p)
+			\end{array}\]
+\end{itemize}
+Se cumple que si $p=0.5$ entonces la distribución binomial es simétrica. Si $p>0.5$ entonces será asimétrica negativa. En el caso contrario, será asimétrica positiva.
 
+\section{Distribución Geométrica}
+Un experimento consistirá en estudiar repeticiones independientes con dos posibles resultados. Estos son el fracaso y el éxito. $p$ será la probabilidad de éxito para una repetición y es de interes el instante del primer éxito. La variable aleatoria discreta se definirá como $X=$ repetición en la que se observa el primer éxito. Así, se dirá que X sigue una distribución geométrica $X\sim G(p)$.
+\begin{itemize}
+	\item Función de masa de la variable:
+		\[P(X=x) = p(1-p)^{x-1}\:,\;x\in\{1,2,\dots\}\]
+	\item Media y Varianza de la variable:
+		\[\begin{array}{c}
+			E[X] = \mu = \frac 1{p}\\
+			Var[X] = \sigma^2 = \frac 1{p^2}
+		\end{array}\]
+\end{itemize}
+Obviamente, si el éxito se produce en $k$, entonces habrá $k-1$ fracasos. Por lo general, además, se cumple que $P(X>x_j\:|\:X>x_i) = P(X>x_j-x_i)$. Debido a esto se dice que la distribución geométrica no tiene memoria.
 
-
-
-
+\section{Distribución de Poisson}
+Estas distribuciones estudiarán el número de ocurrencias de un suceso dentro de un intervalo temporal o espacial. Se denotará por $\lambda$ a la intensidad de ocurrencias y esta será conocida y dependiente de la longitud del intervalo, a parte de proporcional. La variable aleatoria discreta se definirá como $X=$ número de observaciones de un suceso en un intervalo dado. Así, se podrá decir que $X$ sigue una distribución de Poisson $X\sim Po(\lambda)$.
+\begin{itemize}
+	\item Funcion de masa de probabilidad de la variable:
+		\[P(X=x) = e^{-\lambda}\frac{\lambda^x}{x!}\:,\;x\in\{0,1,2,\dots\}\]
+	\item Media y Varianza de la variable:
+		\[
+			\begin{array}{c}
+				\,E[X] = \mu = \lambda\\
+				Var[X] = \sigma ^2 = \lambda
+			\end{array}
+		\]
+\end{itemize}
+La distribución de Poisson puede interpretarse como una aproximación a la binomial como $\lambda = np$. Se considera la aproximación válida para $n\geq 20$ con $p\leq 0.05$. Si $n\geq 100$ y $np\leq 10$ la aproximación es muy buena.
 
 
 
