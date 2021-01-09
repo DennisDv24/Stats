@@ -511,16 +511,95 @@ Estas distribuciones estudiarán el número de ocurrencias de un suceso dentro d
 \end{itemize}
 La distribución de Poisson puede interpretarse como una aproximación a la binomial como $\lambda = np$. Se considera la aproximación válida para $n\geq 20$ con $p\leq 0.05$. Si $n\geq 100$ y $np\leq 10$ la aproximación es muy buena.
 
+\section{Variables Aleatorias Continuas}
+Cuando se trata de una variable discreta y aunque los valores tomen valores infinitos numerables, cada valor tiene una probabiliad de modo $f(x_i) = P(X=x_i)$. De esta forma: 
+\[\sum_{i=1}^\infty f(x_i) = \sum_{i=1}^\infty P(X=x_i) = 1\]
+Ahora bien, en una variable aleatoria continua no se puede hacer una suma infinita, debido a que los valores posibles de la variable son infinitos no numerables. De esta forma, mientras que para sumas infinitas se usan sumatorios, para sumas infinitesimales se usan integrales, que van a ser la herramienta clave de estas variables.
+\subsection{Función de Densidad}
+La función de densidad de una variable aleatoria continua $X$ es $f:\mathbb{R}\to\mathbb{R}$. Esta es integrable y no negativa. Se cumple que:
+\begin{itemize}
+	\item $f(x) \geq 0$.
+	\item $\int_{-\infty}^\infty f(x)dx = 1$.
+	\item $P(a\leq X \leq b) =\int_a^bf(x)dx\:,\;a<b$.
+\end{itemize}
+Debido a la naturaleza infinitesimal de estas variables se cumple que la probabiliadd de un punto concreto es nula, por definción. Debido a esto mismo, es indiferente si los límites de los valores de la variable están incluidos o no:
+\[P(a\leq X\leq b) = P(a\leq X <b) = P(a<X\leq b) = P(a<X<b)\]
+\subsection{Función de Distribución}
+Para una v.a. $X$ se define la función de desidad como:
+\[F(x) = P(X\leq x) =\int_{-\infty}^xf(t)dt\:,\;\forall x\in\mathbb{R}\]
+Propiedades: 
+\begin{itemize}
+	\item $P(a<X\leq b) = F(b) -F(a)$.
+	\item $F$ es monótona no decreciente.
+	\item $F(-\infty) = 0$.
+	\item $F(\infty) = 1$.
+	\item $F$ es continua por la derecha.
+	\item $F'(x) = f(x)$.
+\end{itemize}
+\subsection{Momento de una variable aleatoria continua}
+\begin{itemize}
+	\item Esperanza (Media) de una V.A.: $E(X) = \mu = \int_{-\infty}^\infty xf(x)dx$.
+	\item Varianza de una V.A: $Var(X) = \sigma^2 = \int_{-\infty}^{\infty}(x-\mu)^2f(x)dx = \int_{-\infty}^\infty x^2f(x)dx-\mu^2$.
+	\item Desviación típica de una V.A.: $\sigma = \sqrt{Var(X)}$.
+\end{itemize}
 
+\section{Distribución Uniforme}
+Esta distrubución se denota como $X\sim U(a,b)$ para una función de densidad
+\[f(x) = \left\{\begin{array}{cc}
+	\frac{1}{b-1} & ,\;x\in(a,b)\\
+	0 & ,\;x\notin (a,b)
+\end{array}\right.\]
+Con función de distribución:
+\[F(X) = \left\{\begin{array}{cl}
+		0 & ,\;x\leq a\\
+		\frac{x-a}{b-a} &,\;a\in (a,b)\\
+		1 & ,\; x\geq b
+\end{array}\right.\]
+Donde la media y varianza son:
+\[	\mu = \frac{a+b}{2}\:,\;
+\sigma^2 = \frac{(b-a)^2}{12}\]
 
+\section{Distribución Exponencial}
+\[X\sim Exp(\alpha)\:,\;\alpha > 0\iff f(x)=
+		\left\{\begin{array}{cl}
+				\alpha e^{-\alpha x} &,\;x>0\\
+				0 & ,\; x\leq 0
+				\end{array}\right.\]
+Se observa que la distribución exponencial es equivalente a la distribución
+geométrica para una variable discreta. Esta distribución es de interes para describir procesos en los que se interesa conmocer el tiempo que pasa hasta que ocurren. Eso se da asumiendo que el proceso no tiene memoria (no depende de lo ocurrido anteriormente). La media y variabza de una distribución de este tipo son:
+\[\mu = \frac 1{\alpha} \:,\; Var(X) = \frac 1{\alpha^2}\]
+Con una función de distribución tal que:
+\[F(x) = 
+	\left\{\begin{array}{cc}
+		0  &,\; x\leq 0 \\
+		1-e^{-\alpha x} &,\; x> 0
+	\end{array}\right.
+\]
 
-
-
-
-
-
-
-
+Por lo general, si $X\sim Exp(\lambda)$ entonces
+\[ P(X<x_j\:|\: X>x_i) = P(X>x_j-x_i)\]
+Es por esto que se dice que la distribución exponencial no tiene memoria.	
+\section{Distribución Normal}
+Esta distribución seguramente sea la más importante de la estadística. Esto se debe a:
+\begin{enumerate}
+	\item Es común la medición de magnitudes con errores normales.
+	\item Debido a la naturaleza de la distribución, los cálculos resultan sencillos.
+	\item Gracias al Teorema Central del Límite muchas distribuciones se pueden aproximar a la distribución normal, con muestras lo suficientemente grandes.
+\end{enumerate}
+De esta forma, se dice que 
+\[X\sim N(\mu,\sigma^2)\;,\;\; f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\:,\; x\in\mathbb{R}\]
+Se cumple que:
+\begin{itemize}
+	\item $\int_{-\infty}^\infty f(x)dx = 1$.
+	\item $E(X) = \int_{-\infty}^\infty xf(x)dx = \mu$.
+	\item $Var(X) = \int_{-\infty}^\infty (x-\mu)^2f(x)dx = \sigma^2$.
+\end{itemize}
+\section{Distribución Normal Estándar}
+Se trata de la distribución normal con media $0$ y varianza $1$, o sea $Z\sim N(0,1) $. En este caso, la función para todo $z$ en los reales es:
+\[f(z) = \frac 1{\sqrt{2\pi}}e^{-\frac{z^2}{2}}\]
+Con función de distribución:
+\[\Phi(z) = P(Z\leq z) = \int_{-\infty}^zf(t)dt\]
+El problema es que la cuenta de esta integral resulta extremadamente tediosa. Debido a esto se usan tablas con muchos valores de $\Phi(z)$ para $z\geq 0$.
 
 
 
